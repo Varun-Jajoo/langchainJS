@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ChatbotApp = () => {
-  const [inputValue, setInputValue] = useState(''); // Define inputValue as a state variable
+  const [inputValue, setInputValue] = useState(''); 
   const [outputValue, setOutputValue] = useState('');
-  const [file, setFile] = useState(null); // State variable to store the uploaded file
+  const [file, setFile] = useState(null); 
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value); // Update inputValue when input changes
+    setInputValue(e.target.value); 
   };
 
   const handleFileChange = (e) => {
-    // Update the file state when a file is selected
+   
     setFile(e.target.files[0]);
   };
 
@@ -19,11 +19,10 @@ const ChatbotApp = () => {
     try {
       const formData = new FormData();
       formData.append('input', inputValue);
-      formData.append('file', file); // Append the uploaded file to the form data
-
+      formData.append('file', file); 
       const res = await axios.post('http://localhost:3020/api/process-input', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data for file upload
+          'Content-Type': 'multipart/form-data',
         },
       });
       console.log(res.data);
@@ -75,7 +74,7 @@ const ChatbotApp = () => {
         <div style={{ position: 'relative', display: 'inline-block' }}>
   <input
     type="file"
-    id="fileInput" // Added id attribute for label association
+    id="fileInput" 
     onChange={handleFileChange}
     style={{
       position: 'absolute',
